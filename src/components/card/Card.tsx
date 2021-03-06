@@ -1,26 +1,41 @@
-import { useState } from 'react';
-import { ICard } from './types';
+import { useState } from "react";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { ICard } from "./types";
+import { getInitials } from "../constants/helperFunctions";
 import './Card.scss';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 export const Card = (props: ICard) => {
-  const [hoverState, setHoverState] = useState(false);
-  const { title } = props;
+  const [ hoverState, setHoverState ] = useState(false);
+  const { title, members } = props;
 
   const onHoverEnter = () => {
     setHoverState(true);
-  };
+  }
 
   const onHoverLeave = () => {
     setHoverState(false);
-  };
-
+  }
+  
   return (
-    <div className="card">
+    <div
+      className="card"
+      onMouseEnter={() => onHoverEnter}
+      onMouseLeave={() => onHoverLeave}
+    >
       <span>{title}</span>
-      <span className="editButton">
-        <FontAwesomeIcon icon="pencil-alt" />
+      <FontAwesomeIcon
+        className="editButton"
+        icon="pencil-alt"
+        visibility={hoverState ? 'visible' : 'hidden'}
+      />
+      <FontAwesomeIcon icon="eye" />
+      <span>
+        {
+          members.map(member => (
+            <span className="userCircle">{getInitials(member)}</span>
+          ))
+        }
       </span>
     </div>
-  );
-};
+  )
+}

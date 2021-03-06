@@ -15,8 +15,6 @@ const initialState: ICard = {
 //   switch (action.type) {
 //     case ADD_CARD:
 //       const indexOfParent =
-//       return {
-
-//       }
+//       return Object.assign({}, )
 //   }
 // }
