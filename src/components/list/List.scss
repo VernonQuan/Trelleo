@@ -1,18 +1,23 @@
 .list {
-  background-color: rgb(218, 218, 218);
-  border-radius: 4px;
+  background-color: #ebecf0;
+  border-radius: 3px;
+  box-sizing: border-box;
   display: flex;
   flex-direction: column;
   margin: 4px;
+  max-height: 100%;
   min-width: 255px;
+  overflow: auto;
   padding: 5px;
+  position: relative;
   width: 255px;
+  white-space: normal;
 }
 
 .title {
   border-radius: 2px;
-  min-width: 200px;
-  padding: 5px;
+  min-width: 180px;
+  padding: 6px;
 
   &:hover {
     cursor: pointer;
@@ -22,6 +27,12 @@
     background-color: rgb(255, 255, 255);
     cursor: text;
   }
+}
+
+.openCardComposer {
+  display: flexbox;
+  flex-direction: row;
+  justify-content: space-between;
 }
 
 .add {
@@ -37,15 +48,32 @@
   }
 }
 
+.deleteButton {
+  border-radius: 3px;
+  padding: 6px;
+  float: right;
+
+  &:hover {
+    background-color: lightgray;
+    cursor: pointer;
+  }
+}
+
 .cardComposer {
-  width: 100vh;
-  min-width: 100vh;
+  color: #5e6c84;
+  min-width: 240px;
+  width: 240px;
 }
 
 .cardComposerTextArea {
+  border-radius: 5px;
   height: unset;
-  padding: 4px;
-  min-height: 40px;
+  padding: 4px 4px 30px 4px;
+  max-height: 120px;
+  margin: 4px;
+  min-height: 54px;
+  overflow: hidden;
+  overflow-wrap: break-word;
   resize: none;
   width: 240px;
 }

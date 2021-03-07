@@ -1,3 +1,5 @@
+import { useEffect } from 'react';
+
 export const getInitials = (name: string): string => {
   const names = name.split(' ');
   if (names.length === 1) {
