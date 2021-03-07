@@ -4,15 +4,15 @@ import { ICard } from './types';
 import { getInitials } from '../constants/helperFunctions';
 import './Card.scss';
 
-export const Card = (props: ICard) => {
+export const Card = (props: ICard): JSX.Element => {
   const [hoverState, setHoverState] = useState(false);
   const { title, members } = props;
 
-  const onHoverEnter = () => {
+  const onHoverEnter = (): void => {
     setHoverState(true);
   };
 
-  const onHoverLeave = () => {
+  const onHoverLeave = (): void => {
     setHoverState(false);
   };
 

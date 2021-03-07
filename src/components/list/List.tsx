@@ -23,7 +23,7 @@ const List = (props: IList): JSX.Element => {
     submitChange();
   };
 
-  const submitChange = () => {
+  const submitChange = (): void => {
     setEditingTitle(false);
     if (titleState.trim() === '') {
       setTitleState(title);
@@ -45,15 +45,15 @@ const List = (props: IList): JSX.Element => {
     setTitleState(e.target.value);
   };
 
-  const toggleCreateNewCard = () => {
+  const toggleCreateNewCard = (): void => {
     setCreateNewCard(true);
   };
 
-  const editText = () => {
+  const editText = (): void => {
     setEditingTitle(true);
   };
 
-  const deleteList = () => {
+  const deleteList = (): void => {
     dispatch({
       type: DELETE_LIST,
       payload: {
@@ -76,13 +76,13 @@ const List = (props: IList): JSX.Element => {
     setNewCardText(e.target.value);
   };
 
-  const onBlurNewCard = () => {
+  const onBlurNewCard = (): void => {
     submitNewCard();
     setCreateNewCard(false);
     setNewCardText('');
   };
 
-  const submitNewCard = () => {
+  const submitNewCard = (): void => {
     if (newCardText.trim() === '') {
       return;
     }
@@ -100,7 +100,7 @@ const List = (props: IList): JSX.Element => {
     setNewCardText('');
   };
 
-  const enterKeyDetector = ({ key }: KeyboardEvent) => {
+  const enterKeyDetector = ({ key }: KeyboardEvent): void => {
     if (key === 'Enter') {
       submitNewCard();
     }
@@ -109,7 +109,7 @@ const List = (props: IList): JSX.Element => {
   useEffect(() => {
     window.addEventListener('keydown', enterKeyDetector);
 
-    return () => {
+    return (): void => {
       window.removeEventListener('keydown', enterKeyDetector);
     };
   }, []);

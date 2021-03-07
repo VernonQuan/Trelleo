@@ -1,19 +1,18 @@
 import { ChangeEvent, FormEvent, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { AppState } from '../../store/rootReducer';
-import { createNewList } from '../list/actions';
 import List from '../list/List';
 import { ADD_LIST } from '../list/types';
 import './Board.scss';
 
-const Board = () => {
+const Board = (): JSX.Element => {
   const { board } = useSelector((state: AppState) => state);
   const [createList, setCreateList] = useState(false);
   const [createListText, setCreateListText] = useState('');
   const { lists, title } = board;
   const dispatch = useDispatch();
 
-  const toggleCreateList = () => {
+  const toggleCreateList = (): void => {
     setCreateList(!createList);
   };
 
@@ -26,7 +25,7 @@ const Board = () => {
     setCreateListText(e.target.value);
   };
 
-  const submitList = () => {
+  const submitList = (): void => {
     if (createListText.trim() === '') {
       return;
     }
