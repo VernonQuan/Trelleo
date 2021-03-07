@@ -11,8 +11,8 @@ export interface ICard {
 export interface AddCardAction {
   type: typeof ADD_CARD;
   payload: {
-    newCard: ICard;
-    parentList: IList;
+    card: ICard;
+    list: IList;
   };
 }
 
@@ -20,7 +20,7 @@ export interface EditCardAction {
   type: typeof EDIT_CARD;
   payload: {
     card: ICard;
-    parentList: IList;
+    list: IList;
   };
 }
 
@@ -28,7 +28,7 @@ export interface DeleteCardAction {
   type: typeof DELETE_CARD;
   payload: {
     card: ICard;
-    parentList: IList;
+    list: IList;
   };
 }
 

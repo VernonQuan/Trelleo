@@ -1,23 +1,23 @@
 import { IList } from '../list/types';
 import { ADD_CARD, EDIT_CARD, DELETE_CARD, CardActionTypes, ICard } from './types';
 
-export const addCard = ({ newCard, parentList }: { newCard: ICard; parentList: IList }): CardActionTypes => {
+export const addCard = ({ card, list }: { card: ICard; list: IList }): CardActionTypes => {
   return {
     type: ADD_CARD,
-    payload: { newCard, parentList },
+    payload: { card, list },
   };
 };
 
-export const editCard = ({ card, parentList }: { card: ICard; parentList: IList }): CardActionTypes => {
+export const editCard = ({ card, list }: { card: ICard; list: IList }): CardActionTypes => {
   return {
     type: EDIT_CARD,
-    payload: { card, parentList },
+    payload: { card, list },
   };
 };
 
-export const deleteCard = ({ card, parentList }: { card: ICard; parentList: IList }): CardActionTypes => {
+export const deleteCard = ({ card, list }: { card: ICard; list: IList }): CardActionTypes => {
   return {
     type: DELETE_CARD,
-    payload: { card, parentList },
+    payload: { card, list },
   };
 };

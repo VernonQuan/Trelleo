@@ -12,17 +12,17 @@ export interface IList {
 
 interface AddListAction {
   type: typeof ADD_LIST;
-  payload: IList;
+  payload: { list: IList };
 }
 
 interface EditListAction {
   type: typeof EDIT_LIST;
-  payload: IList;
+  payload: { list: IList };
 }
 
 interface DeleteListAction {
   type: typeof DELETE_LIST;
-  payload: IList;
+  payload: { list: IList };
 }
 
 export type ListActionTypes = AddListAction | EditListAction | DeleteListAction;

@@ -1,17 +1,14 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
-import App from './App';
-import { createStore } from 'redux';
-import { rootReducer } from './store/combineReducer';
+import Board from './components/board/Board';
 import { Provider } from 'react-redux';
-
-const store = createStore(rootReducer);
+import { store } from './store/rootReducer';
 
 ReactDOM.render(
   <React.StrictMode>
     <Provider store={store}>
-      <App />
+      <Board />
     </Provider>
   </React.StrictMode>,
   document.getElementById('root'),

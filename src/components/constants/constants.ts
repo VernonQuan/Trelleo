@@ -1,3 +1,4 @@
+import { IBoard } from '../board/types';
 import { IList } from '../list/types';
 
 export const listSample: IList[] = [
@@ -23,3 +24,9 @@ export const listSample: IList[] = [
     cards: [],
   },
 ];
+
+export const sampleBoard: IBoard = {
+  id: 0,
+  title: 'To Dos',
+  lists: listSample,
+};
