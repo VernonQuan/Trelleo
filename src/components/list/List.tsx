@@ -1,3 +1,5 @@
+import { faEllipsisH, faPlus } from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { Card } from '../card/Card';
@@ -12,6 +14,7 @@ const List = (props: IList): JSX.Element => {
   const [newCardText, setNewCardText] = useState('');
   const [titleState, setTitleState] = useState(title);
   const [textareaRows, setTextareaRows] = useState(1);
+  const [showDropdown, setShowDropdown] = useState(false);
   const dispatch = useDispatch();
 
   const handleTitleOnSubmit = (e: React.FormEvent<HTMLFormElement>): void => {
@@ -51,6 +54,10 @@ const List = (props: IList): JSX.Element => {
 
   const editText = (): void => {
     setEditingTitle(true);
+  };
+
+  const onElipsesClick = (): void => {
+    setShowDropdown(true);
   };
 
   const deleteList = (): void => {
@@ -100,6 +107,10 @@ const List = (props: IList): JSX.Element => {
     setNewCardText('');
   };
 
+  const handleMouseClickOutside = (e: MouseEvent): void => {
+    setShowDropdown(false);
+  };
+
   const enterKeyDetector = ({ key }: KeyboardEvent): void => {
     if (key === 'Enter') {
       submitNewCard();
@@ -108,9 +119,11 @@ const List = (props: IList): JSX.Element => {
 
   useEffect(() => {
     window.addEventListener('keydown', enterKeyDetector);
+    window.addEventListener('mousedown', handleMouseClickOutside);
 
     return (): void => {
       window.removeEventListener('keydown', enterKeyDetector);
+      window.removeEventListener('mousedown', handleMouseClickOutside);
     };
   }, []);
 
@@ -134,7 +147,7 @@ const List = (props: IList): JSX.Element => {
           </span>
         )}
         <span onClick={deleteList} className="deleteButton">
-          X
+          <FontAwesomeIcon icon={faEllipsisH} />
         </span>
       </div>
       {cards.map((card) => (
@@ -153,7 +166,10 @@ const List = (props: IList): JSX.Element => {
           />
         </form>
       ) : (
-        <div className="add" onClick={toggleCreateNewCard}>{`Add ${cards.length > 0 ? 'another' : 'a'} card`}</div>
+        <div className="add" onClick={toggleCreateNewCard}>
+          <FontAwesomeIcon icon={faPlus} />
+          {`Add ${cards.length > 0 ? 'another' : 'a'} card`}
+        </div>
       )}
     </div>
   );
