@@ -1,12 +1,12 @@
 import { useState } from 'react';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faEye, faTimes } from '@fortawesome/free-solid-svg-icons';
-import { DELETE_CARD, ICard } from './types';
-import { getInitials } from '../constants/helperFunctions';
-import './Card.scss';
 import { useDispatch } from 'react-redux';
 import Modal from 'react-responsive-modal';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faEye, faTimes } from '@fortawesome/free-solid-svg-icons';
 import CardModal from '../cardModal/CardModal';
+import { getInitials } from '../constants/helperFunctions';
+import { DELETE_CARD, ICard } from './types';
+import './Card.scss';
 
 interface cardProp {
   card: ICard;

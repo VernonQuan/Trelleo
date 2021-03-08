@@ -1,7 +1,7 @@
-import { ICard } from '../card/types';
+import { ChangeEvent, useState } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faAlignJustify, faCreditCard } from '@fortawesome/free-solid-svg-icons';
-import { ChangeEvent, useState } from 'react';
+import { ICard } from '../card/types';
 import { sidebarItems } from './sidebarItems';
 import './CardModal.scss';
 

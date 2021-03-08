@@ -1,12 +1,12 @@
-import { faPlus, faTimes } from '@fortawesome/free-solid-svg-icons';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { useRef, useState } from 'react';
 import { useDispatch } from 'react-redux';
+import { faPlus, faTimes } from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { Card } from '../card/Card';
 import { ADD_CARD } from '../card/types';
-import './List.scss';
-import '../shared/shared.scss';
 import { DELETE_LIST, EDIT_LIST, IList } from './types';
+import '../shared/shared.scss';
+import './List.scss';
 
 const List = (props: IList): JSX.Element => {
   const { title, cards, id } = props;

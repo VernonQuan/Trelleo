@@ -1,16 +1,16 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import './index.css';
-import Board from './components/board/Board';
-import 'react-responsive-modal/styles.css';
+import { StrictMode } from 'react';
+import { render } from 'react-dom';
 import { Provider } from 'react-redux';
+import 'react-responsive-modal/styles.css';
 import { store } from './store/rootReducer';
+import Board from './components/board/Board';
+import './index.css';
 
-ReactDOM.render(
-  <React.StrictMode>
+render(
+  <StrictMode>
     <Provider store={store}>
       <Board />
     </Provider>
-  </React.StrictMode>,
+  </StrictMode>,
   document.getElementById('root'),
 );

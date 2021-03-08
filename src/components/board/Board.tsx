@@ -1,13 +1,13 @@
-import { faEllipsisH, faPlus, faTimes } from '@fortawesome/free-solid-svg-icons';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { ChangeEvent, FormEvent, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import { faEllipsisH, faPlus, faTimes } from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { AppState } from '../../store/rootReducer';
 import List from '../list/List';
 import { ADD_LIST } from '../list/types';
 import Menu from '../menu/Menu';
-import './Board.scss';
 import '../shared/shared.scss';
+import './Board.scss';
 
 const Board = (): JSX.Element => {
   const {
