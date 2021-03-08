@@ -96,7 +96,7 @@ const List = (props: IList): JSX.Element => {
       payload: {
         card: {
           id: newId,
-          title: newCardText.trim,
+          title: newCardText.trim(),
           members: [],
         },
         list: props,

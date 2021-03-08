@@ -5,6 +5,8 @@ import { DELETE_CARD, ICard } from './types';
 import { getInitials } from '../constants/helperFunctions';
 import './Card.scss';
 import { useDispatch } from 'react-redux';
+import Modal from 'react-responsive-modal';
+import CardModal from '../cardModal/CardModal';
 
 interface cardProp {
   card: ICard;
@@ -13,6 +15,7 @@ interface cardProp {
 
 export const Card = (props: cardProp): JSX.Element => {
   const [hoverState, setHoverState] = useState(false);
+  const [showModal, setShowModal] = useState(false);
   const dispatch = useDispatch();
   const { card, parentList } = props;
   const { title, members } = card;
@@ -35,8 +38,12 @@ export const Card = (props: cardProp): JSX.Element => {
     });
   };
 
+  const toggleShowModal = (): void => {
+    setShowModal(!showModal);
+  };
+
   return (
-    <div className="card" onMouseEnter={onHoverEnter} onMouseLeave={onHoverLeave}>
+    <div className="card" onClick={toggleShowModal} onMouseEnter={onHoverEnter} onMouseLeave={onHoverLeave}>
       <div className="cardRow1">
         <span className="cardTitle">{title}</span>
         <span onClick={deleteCard}>
@@ -53,6 +60,9 @@ export const Card = (props: cardProp): JSX.Element => {
           </span>
         ))}
       </span>
+      <Modal open={showModal} onClose={toggleShowModal}>
+        <CardModal {...{ card, parentList }} />
+      </Modal>
     </div>
   );
 };

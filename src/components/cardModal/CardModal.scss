@@ -1,0 +1,73 @@
+.modalContainer {
+  border-radius: 10px;
+}
+
+.modalHeader {
+  display: flex;
+  flex-direction: row;
+}
+
+.cardIcon {
+  padding: 10px;
+}
+
+.cardDescription {
+  display: flex;
+  flex-direction: column;
+  padding: 10px;
+  width: 300px;
+}
+
+.cardTitle {
+  font-weight: 600;
+}
+
+.fromList {
+  margin-top: 4px;
+  color: rgb(172, 172, 172)
+}
+
+.parentName {
+  text-decoration: underline;
+
+  &:hover {
+    cursor: pointer;
+  }
+}
+
+.modalMainCol {
+  display: flex;
+  flex-direction: row;
+}
+
+.textArea {
+  display: flex;
+  flex-direction: row;
+}
+
+.editDescriptionButton {
+  background-color: rgb(231, 231, 231);
+  border-radius: 5px;
+  padding: 10px 300px 40px 10px;
+
+  &:hover {
+    background-color: rgb(212, 212, 212);
+    cursor: pointer;
+  }
+}
+
+.sidebarItem {
+  background-color: rgb(231, 231, 231);
+  border-radius: 5px;
+  margin: 4px;
+  padding: 4px 40px 4px 4px;
+
+  &:hover {
+    background-color: rgb(212, 212, 212);
+    cursor: pointer;
+  }
+}
+
+.sidebarItemIcon {
+  margin: 0 10px;
+}
