@@ -1,6 +1,6 @@
-import { faEllipsisH, faPlus } from '@fortawesome/free-solid-svg-icons';
+import { faPlus, faTimes } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { useEffect, useState } from 'react';
+import { useRef, useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { Card } from '../card/Card';
 import { ADD_CARD } from '../card/types';
@@ -14,7 +14,7 @@ const List = (props: IList): JSX.Element => {
   const [newCardText, setNewCardText] = useState('');
   const [titleState, setTitleState] = useState(title);
   const [textareaRows, setTextareaRows] = useState(1);
-  const [showDropdown, setShowDropdown] = useState(false);
+  const textAreaRef = useRef(null);
   const dispatch = useDispatch();
 
   const handleTitleOnSubmit = (e: React.FormEvent<HTMLFormElement>): void => {
@@ -54,10 +54,6 @@ const List = (props: IList): JSX.Element => {
 
   const editText = (): void => {
     setEditingTitle(true);
-  };
-
-  const onElipsesClick = (): void => {
-    setShowDropdown(true);
   };
 
   const deleteList = (): void => {
@@ -107,25 +103,10 @@ const List = (props: IList): JSX.Element => {
     setNewCardText('');
   };
 
-  const handleMouseClickOutside = (e: MouseEvent): void => {
-    setShowDropdown(false);
+  const onCancelCreateCard = (): void => {
+    setCreateNewCard(false);
+    setNewCardText('');
   };
-
-  const enterKeyDetector = ({ key }: KeyboardEvent): void => {
-    if (key === 'Enter') {
-      submitNewCard();
-    }
-  };
-
-  useEffect(() => {
-    window.addEventListener('keydown', enterKeyDetector);
-    window.addEventListener('mousedown', handleMouseClickOutside);
-
-    return (): void => {
-      window.removeEventListener('keydown', enterKeyDetector);
-      window.removeEventListener('mousedown', handleMouseClickOutside);
-    };
-  }, []);
 
   return (
     <div className="list">
@@ -147,23 +128,26 @@ const List = (props: IList): JSX.Element => {
           </span>
         )}
         <span onClick={deleteList} className="deleteButton">
-          <FontAwesomeIcon icon={faEllipsisH} />
+          <FontAwesomeIcon icon={faTimes} />
         </span>
       </div>
       {cards.map((card) => (
-        <Card key={`${card.title}-${card.id}`} {...card} />
+        <Card key={`${card.title}-${card.id}`} {...{ card: card, parentList: props }} />
       ))}
       {createNewCard ? (
-        <form className="cardComposer">
+        <form onSubmit={submitNewCard} className="cardComposer">
           <textarea
             autoFocus
             className="cardComposerTextArea"
             onBlur={onBlurNewCard}
             onChange={onChangeNewCard}
             placeholder="Enter a title for this card..."
+            ref={textAreaRef}
             rows={textareaRows}
             value={newCardText}
           />
+          <input className="submitNewCardButton" type="submit" />
+          <FontAwesomeIcon onClick={onCancelCreateCard} icon={faTimes} />
         </form>
       ) : (
         <div className="add" onClick={toggleCreateNewCard}>
