@@ -7,7 +7,7 @@
   flex-direction: column;
   height: 100vh;
   margin: auto;
-  padding: 0;
+  padding: 5px;
   width: 100vw;
 }
 
@@ -20,21 +20,37 @@
   flex-direction: row;
 }
 
+.newListContainer {
+  border-radius: 3px;
+  min-width: 255px;
+  margin: 4px;
+  transition: height 0.25s linear;
+  width: 255px;
+}
+
 .openAddList {
   background-color: hsla(0, 0%, 100%, .24);
-  border-radius: 4px;
   color: #fff;
-  margin: 4px;
   max-height: 30px;
-  min-width: 255px;
   padding: 8px 20px;
-  width: 255px;
   vertical-align: middle;
 
   &:hover {
     background-color: rgba(233, 233, 233, 0.24);
     cursor: pointer;
   }
+}
+
+.addList {
+  background-color: #ebecf0;
+  display: flex;
+  flex-direction: row;
+  padding: 10px;
+}
+
+.addListText {
+  padding: 8px;
+  width: 90%;
 }
 
 .menuBar {

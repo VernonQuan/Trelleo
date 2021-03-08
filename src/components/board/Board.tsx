@@ -10,11 +10,12 @@ import './Board.scss';
 import '../shared/shared.scss';
 
 const Board = (): JSX.Element => {
-  const { board } = useSelector((state: AppState) => state);
+  const {
+    board: { lists, title },
+  } = useSelector((state: AppState) => state);
   const [createList, setCreateList] = useState(false);
   const [createListText, setCreateListText] = useState('');
   const [showMenu, setShowMenu] = useState(false);
-  const { lists, title } = board;
   const dispatch = useDispatch();
 
   const toggleCreateList = (): void => {
@@ -69,29 +70,34 @@ const Board = (): JSX.Element => {
         {lists.map((list) => (
           <List key={`${list.title}-${list.id}`} {...list} />
         ))}
-        {createList ? (
-          <form onSubmit={onSubmitList}>
-            <input
-              autoFocus
-              type="text"
-              onBlur={toggleCreateList}
-              onChange={onChangeListText}
-              placeholder="Enter list title..."
-              value={createListText}
-            />
-            <input className="submitButton" type="submit" value="Add List" />
-            <span className="cancelButton" onClick={toggleCreateList}>
-              <FontAwesomeIcon icon={faTimes} />
-            </span>
-          </form>
-        ) : (
-          <div onClick={toggleCreateList} className="openAddList">
-            <span className="addIcon">
-              <FontAwesomeIcon icon={faPlus} />
-            </span>
-            <span>{`Add ${lists.length > 0 ? 'another' : 'a'} list`}</span>
-          </div>
-        )}
+        <div className="newListContainer">
+          {createList ? (
+            <div className="addList">
+              <form onSubmit={onSubmitList}>
+                <input
+                  autoFocus
+                  className="addListText"
+                  type="text"
+                  onBlur={toggleCreateList}
+                  onChange={onChangeListText}
+                  placeholder="Enter list title..."
+                  value={createListText}
+                />
+                <input className="submitButton" type="submit" value="Add List" />
+                <span className="cancelButton" onClick={toggleCreateList}>
+                  <FontAwesomeIcon icon={faTimes} />
+                </span>
+              </form>
+            </div>
+          ) : (
+            <div onClick={toggleCreateList} className="openAddList">
+              <span className="addIcon">
+                <FontAwesomeIcon icon={faPlus} />
+              </span>
+              <span>{`Add ${lists.length > 0 ? 'another' : 'a'} list`}</span>
+            </div>
+          )}
+        </div>
       </div>
     </div>
   );
