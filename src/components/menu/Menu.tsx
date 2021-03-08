@@ -20,8 +20,10 @@ const Menu = (props: MenuProps): JSX.Element => {
       {menuItems.map((menuItem) => (
         <div key={menuItem.name} className="menuItem">
           {menuItem.icon && <FontAwesomeIcon className="menuItemIcon" icon={menuItem.icon} />}
-          <span className="menuItemName">{menuItem.name}</span>
-          {menuItem.description && <div className="menuItemDescription">{menuItem.description}</div>}
+          <div className="menuItemText">
+            <span className="menuItemName">{menuItem.name}</span>
+            {menuItem.description && <div className="menuItemDescription">{menuItem.description}</div>}
+          </div>
         </div>
       ))}
     </div>

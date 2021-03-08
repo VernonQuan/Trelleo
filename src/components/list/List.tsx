@@ -5,6 +5,7 @@ import { useDispatch } from 'react-redux';
 import { Card } from '../card/Card';
 import { ADD_CARD } from '../card/types';
 import './List.scss';
+import '../shared/shared.scss';
 import { DELETE_LIST, EDIT_LIST, IList } from './types';
 
 const List = (props: IList): JSX.Element => {
@@ -146,13 +147,19 @@ const List = (props: IList): JSX.Element => {
             rows={textareaRows}
             value={newCardText}
           />
-          <input className="submitNewCardButton" type="submit" />
-          <FontAwesomeIcon onClick={onCancelCreateCard} icon={faTimes} />
+          <span>
+            <input className="submitButton" type="submit" value="Add Card" />
+          </span>
+          <span className="cancelButton">
+            <FontAwesomeIcon onClick={onCancelCreateCard} icon={faTimes} />
+          </span>
         </form>
       ) : (
         <div className="add" onClick={toggleCreateNewCard}>
-          <FontAwesomeIcon icon={faPlus} />
-          {`Add ${cards.length > 0 ? 'another' : 'a'} card`}
+          <span className="addIcon">
+            <FontAwesomeIcon icon={faPlus} />
+          </span>
+          <span>{`Add ${cards.length > 0 ? 'another' : 'a'} card`}</span>
         </div>
       )}
     </div>

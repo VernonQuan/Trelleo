@@ -22,12 +22,13 @@
 
   &:hover {
     cursor: pointer;
-  }  
+  }
 }
-
 
 .menuItem {
   border-radius: 4px;
+  display: flex;
+  flex-direction: row;
   padding: 10px;
   margin: 2px 0;
 
@@ -35,4 +36,12 @@
     background-color: #dcdee0;
     cursor: pointer;
   }
+}
+
+.menuItemIcon {
+  padding-right: 10px;
+}
+
+.menuItemDescription {
+  color: #9e9e9e;
 }

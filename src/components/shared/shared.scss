@@ -1,0 +1,16 @@
+.submitButton {
+  background-color: rgb(0, 158, 0);
+  border: 0px;
+  border-radius: 4px;
+  color: #fff;
+  padding: 10px 15px;
+  margin: 2px 5px;
+
+  &:hover {
+    cursor: pointer;
+  };
+}
+
+.cancelButton:hover {
+  cursor: pointer;
+}

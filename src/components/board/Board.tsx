@@ -1,4 +1,4 @@
-import { faEllipsisH, faPlus } from '@fortawesome/free-solid-svg-icons';
+import { faEllipsisH, faPlus, faTimes } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { ChangeEvent, FormEvent, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
@@ -7,6 +7,7 @@ import List from '../list/List';
 import { ADD_LIST } from '../list/types';
 import Menu from '../menu/Menu';
 import './Board.scss';
+import '../shared/shared.scss';
 
 const Board = (): JSX.Element => {
   const { board } = useSelector((state: AppState) => state);
@@ -78,13 +79,17 @@ const Board = (): JSX.Element => {
               placeholder="Enter list title..."
               value={createListText}
             />
-            <input type="submit" />
-            <span onClick={toggleCreateList}>X</span>
+            <input className="submitButton" type="submit" value="Add List" />
+            <span className="cancelButton" onClick={toggleCreateList}>
+              <FontAwesomeIcon icon={faTimes} />
+            </span>
           </form>
         ) : (
           <div onClick={toggleCreateList} className="openAddList">
-            <FontAwesomeIcon icon={faPlus} />
-            {`Add ${lists.length > 0 ? 'another' : 'a'} list`}
+            <span className="addIcon">
+              <FontAwesomeIcon icon={faPlus} />
+            </span>
+            <span>{`Add ${lists.length > 0 ? 'another' : 'a'} list`}</span>
           </div>
         )}
       </div>

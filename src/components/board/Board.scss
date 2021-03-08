@@ -11,6 +11,10 @@
   width: 100vw;
 }
 
+.addIcon {
+  padding-right: 10px;
+}
+
 .ListContainer {
   display: flex;
   flex-direction: row;
@@ -20,6 +24,7 @@
   background-color: hsla(0, 0%, 100%, .24);
   border-radius: 4px;
   color: #fff;
+  margin: 4px;
   max-height: 30px;
   min-width: 255px;
   padding: 8px 20px;
