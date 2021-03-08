@@ -5,6 +5,7 @@
 .modalHeader {
   display: flex;
   flex-direction: row;
+  margin-bottom: 15px;
 }
 
 .cardIcon {
@@ -45,8 +46,16 @@
   flex-direction: row;
 }
 
+.descriptionIcon {
+  padding: 10px;
+}
+
+.descriptionLabel {
+  font-weight: 600;
+  padding: 10px;
+}
 .editDescriptionButton {
-  background-color: rgb(231, 231, 231);
+  background-color: rgb(245, 245, 245);
   border-radius: 5px;
   padding: 10px 300px 40px 10px;
 
@@ -56,8 +65,12 @@
   }
 }
 
+.modalSidebar {
+  margin-left: 10px;
+}
+
 .sidebarItem {
-  background-color: rgb(231, 231, 231);
+  background-color: rgb(245, 245, 245);
   border-radius: 5px;
   margin: 4px;
   padding: 4px 40px 4px 4px;
