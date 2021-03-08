@@ -35,12 +35,13 @@ const Board = (): JSX.Element => {
     if (createListText.trim() === '') {
       return;
     }
+    const newId = lists.length > 0 ? lists[lists.length - 1].id + 1 : 0;
     dispatch({
       type: ADD_LIST,
       payload: {
         list: {
-          id: lists[lists.length - 1].id + 1,
-          title: createListText,
+          id: newId,
+          title: createListText.trim(),
           cards: [],
         },
       },

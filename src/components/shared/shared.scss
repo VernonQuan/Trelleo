@@ -4,13 +4,16 @@
   border-radius: 4px;
   color: #fff;
   padding: 10px 15px;
-  margin: 2px 0;
+  margin: 6px 0 2px 0;
 
   &:hover {
     cursor: pointer;
   };
 }
 
-.cancelButton:hover {
-  cursor: pointer;
+.cancelButton{
+  margin-left: 10px;
+  &:hover {
+    cursor: pointer;
+  }
 }

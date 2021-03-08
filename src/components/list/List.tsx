@@ -90,12 +90,13 @@ const List = (props: IList): JSX.Element => {
     if (newCardText.trim() === '') {
       return;
     }
+    const newId = cards.length ? cards[cards.length - 1].id + 1 : 0;
     dispatch({
       type: ADD_CARD,
       payload: {
         card: {
-          id: cards.length,
-          title: newCardText,
+          id: newId,
+          title: newCardText.trim,
           members: [],
         },
         list: props,
@@ -107,6 +108,13 @@ const List = (props: IList): JSX.Element => {
   const onCancelCreateCard = (): void => {
     setCreateNewCard(false);
     setNewCardText('');
+  };
+
+  const handleKeyPress = (e: any): void => {
+    if (e.key === 'Enter' && e.shiftKey === false && createNewCard === true) {
+      e.preventDefault();
+      submitNewCard();
+    }
   };
 
   return (
@@ -132,9 +140,11 @@ const List = (props: IList): JSX.Element => {
           <FontAwesomeIcon icon={faTimes} />
         </span>
       </div>
-      {cards.map((card) => (
-        <Card key={`${card.title}-${card.id}`} {...{ card: card, parentList: props }} />
-      ))}
+      <div className="cardsContainer">
+        {cards.map((card) => (
+          <Card key={`${card.title}-${card.id}`} {...{ card: card, parentList: props }} />
+        ))}
+      </div>
       {createNewCard ? (
         <form onSubmit={submitNewCard} className="cardComposer">
           <textarea
@@ -142,6 +152,7 @@ const List = (props: IList): JSX.Element => {
             className="cardComposerTextArea"
             onBlur={onBlurNewCard}
             onChange={onChangeNewCard}
+            onKeyPress={handleKeyPress}
             placeholder="Enter a title for this card..."
             ref={textAreaRef}
             rows={textareaRows}
